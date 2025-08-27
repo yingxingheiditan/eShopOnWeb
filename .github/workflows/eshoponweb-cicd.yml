@@ -56,7 +56,10 @@ jobs:
     environment:
       name: 'Development'
     steps:
-    
+    # Cleanup first
+    - name: Clean previous artifacts
+      run: rm -rf .net-app/ *.zip 2>/dev/null || true
+      
     #Download the publish files created in previous job
     - name: Download artifact from build job
       uses: actions/download-artifact@v4
